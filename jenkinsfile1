@@ -27,7 +27,7 @@ stages{
             parallel{
                 stage ('Deploy to Staging'){
                     steps {
-                    ssh -i "ubuntu.pem" ubuntu@ec2-52-66-68-225.ap-south-1.compute.amazonaws.com
+                    ssh -i ubuntu.pem ubuntu@ec2-52-66-68-225.ap-south-1.compute.amazonaws.com
                          }
                 }
 

@@ -27,12 +27,14 @@ stages{
             parallel{
                 stage ('Deploy to Staging'){
                     steps {
-                        sh "scp -i ubuntu.pem **/target/*.war ec2-user@${params.tomcat}:/var/lib/tomcat7/webapps"
-                    }
+                    ssh -i "ubuntu.pem" ubuntu@ec2-52-66-68-225.ap-south-1.compute.amazonaws.com
+                         }
                 }
 
                 stage ("Deploy to Production"){
                     steps {
+                    // sh "scp -i ubuntu.pem **/target/*.war ec2-user@${params.tomcat}:/var/lib/tomcat7/webapps"
+                  
                         sh "scp -i /home/jenkins/tomcat-demo.pem **/target/*.war ec2-user@${params.tomcat_prod}:/var/lib/tomcat7/webapps"
                     }
                 }
